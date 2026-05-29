@@ -28,7 +28,7 @@ pip install -r requirements.txt
 
 ### 2. Fase de experimentacion y tracking con MlFlow
 # Ejecutar el pipeline de entrenamiento completo
-python train.py
+src/python train.py
 # Para visualizar y comparar de forma gráfica la Regresión Logística contra el Random Forest, enciende el servidor local de MLflow UI:
 mlflow ui --backend-store-uri sqlite:///mlflow_proyectos.db
 
@@ -41,4 +41,4 @@ docker run -d -p 8000:8000 --name diabetes_api_server -v //"$(pwd)/monitoring:/a
 http://localhost:8000/docs/
 
 ### 4. Fase de monitoreo continuo 
-Cada consulta realizada exitosamente a través de la interfaz de Swagger se guarda automáticamente de forma incremental en el archivo local:
+Cada consulta realizada exitosamente a través de la interfaz de Swagger se guarda automáticamente de forma incremental en el archivo local /monitoring
