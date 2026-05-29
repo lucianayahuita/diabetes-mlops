@@ -1,0 +1,48 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API de Predicción de Diabetes",
+    "description": "Interfaz visual para enviar datos de pacientes al modelo de Machine Learning encapsulado en Docker.",
+    "version": "1.0.0"
+  },
+  "basePath": "/",
+  "paths": {
+    "/predict": {
+      "post": {
+        "summary": "Realiza la predicción de diabetes para un paciente",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Datos clínicos del paciente",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Pregnancies": { "type": "integer", "example": 2 },
+                "Glucose": { "type": "integer", "example": 120 },
+                "BloodPressure": { "type": "integer", "example": 70 },
+                "SkinThickness": { "type": "integer", "example": 25 },
+                "Insulin": { "type": "integer", "example": 80 },
+                "BMI": { "type": "number", "example": 28.5 },
+                "DiabetesPedigreeFunction": { "type": "number", "example": 0.45 },
+                "Age": { "type": "integer", "example": 32 }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Predicción exitosa"
+          }
+        }
+      }
+    }
+  }
+}
