@@ -8,7 +8,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
-from preprocess import load_and_clean_data, prepare_splits
+from preprocess import load_and_clean_data, prepare_splits, perform_eda
 
 def evaluate_metrics(y_true, y_pred):
     accuracy = accuracy_score(y_true, y_pred)
@@ -23,8 +23,11 @@ def run_experiment():
     if not os.path.exists(data_path):
         print(f"error: No se encontró el archivo en '{data_path}'. Revisa su ubicación.")
         return
-
     df = load_and_clean_data(data_path)
+    
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    static_dir = os.path.join(base_dir, "static")
+    perform_eda(df, output_dir=static_dir)
     X_train, X_test, y_train, y_test = prepare_splits(df) 
 
     mlflow.set_tracking_uri("sqlite:///mlflow_proyectos.db")

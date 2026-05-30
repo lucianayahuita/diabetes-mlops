@@ -281,3 +281,6 @@ deploy/*.pkl
 mlflow_proyectos.db
 mlruns/
 .mlflow/
+
+# Ignorar las imágenes generadas por el EDA y métricas
+static/*.png
